@@ -10,7 +10,7 @@ print(FilePath)
 # COMMAND ----------
 
 # test / not pipeline ready
-# vcf_path = "/mnt/staging/VCFfiles/annotated_tomato_150.vcf.gz"
+# vcf_path = "/mnt/staging/VCFfiles/[filename].gz"
 
 # COMMAND ----------
 
@@ -52,7 +52,7 @@ vcf_path = "/mnt/"+ FilePath + "/" + FileName
 # COMMAND ----------
 
 # test / not pipeline ready
-# FileName = "annotated_tomato_360.vcf.gz"
+# FileName = "[filename].vcf.gz"
 
 # COMMAND ----------
 
@@ -88,7 +88,7 @@ vcf = vcf.withColumn("FileName", lit(FileName))
 # COMMAND ----------
 
 # test / not pipeline ready
-# vcf = vcf.withColumn("FileName", lit("annotated_tomato_150.vcf.gz"))
+# vcf = vcf.withColumn("FileName", lit("[filename].vcf.gz"))
 
 # COMMAND ----------
 
@@ -101,7 +101,7 @@ outputPath = "/FileStore/Tables" + "/" + FileName
 # COMMAND ----------
 
 # test / not pipeline ready
-# outputPath = "/FileStore/Tables/annotated_tomato_150.vcf.gz"
+# outputPath = "/FileStore/Tables/[filename].vcf.gz"
 
 # COMMAND ----------
 
@@ -121,7 +121,7 @@ dbutils.fs.rm(outputPath, True)
 
 # MAGIC %sql
 # MAGIC DROP TABLE IF EXISTS genomes;
-# MAGIC CREATE TABLE genomes USING DELTA LOCATION 'dbfs:/FileStore/Tables/annotated_tomato_150.vcf.gz';
+# MAGIC CREATE TABLE genomes USING DELTA LOCATION 'dbfs:/FileStore/Tables/[filename].vcf.gz';
 # MAGIC OPTIMIZE genomes ZORDER BY (start)
 
 # COMMAND ----------
